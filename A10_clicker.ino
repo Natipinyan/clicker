@@ -29,3 +29,8 @@ void BTN_loop()
     }
     lastBTNval = correntBTNval;
 }
+
+bool Compare_Data(unsigned long time, unsigned long bestResult)
+{
+    return (time < bestResult) ? true : false;
+}
