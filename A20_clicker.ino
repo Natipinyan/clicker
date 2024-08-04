@@ -15,6 +15,28 @@ void LED_setup()
   pinMode(PIN_LED_B, OUTPUT);
 }
 
+void LED_loop()
+{
+  Update_status();
+}
+void Update_status()
+{
+  switch (playerRollStatus)
+  {
+  case NEW_RECORD:
+    LED_On(0, 255, 255);
+    break;
+
+  case FAILURE:
+    LED_On(255, 191, 0);
+    break;
+
+  default:
+    LED_Off();
+    break;
+  }
+}
+
 void LED_On(int Red, int Green, int Blue)
 {
   analogWrite(PIN_LED_R, Red);
