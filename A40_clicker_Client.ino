@@ -8,3 +8,24 @@ const char *pswd = "11223344";
 
 WiFiClient client;
 int server_port = 80;
+
+unsigned long Get_Data()
+{
+    unsigned long ret = -1;
+    HTTPClient http;
+    String dataURL = "http://api.kits4.me/GEN/api.php?";
+    dataURL += "ACT=GET&DEV=1121&CH=1";
+    http.begin(client, dataURL);
+    int httpCode = http.GET();
+    Serial.println(httpCode);
+    if (httpCode == HTTP_CODE_OK)
+    {
+        Serial.print("HTTP response code ");
+        Serial.println(httpCode);
+        String Res = http.getString();
+        Serial.println(Res);
+        ret = Res.toInt();
+    }
+    http.end();
+    return ret;
+}
