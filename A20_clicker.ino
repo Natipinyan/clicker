@@ -49,3 +49,17 @@ void LED_Off()
   analogWrite(PIN_LED_G, 0);
   analogWrite(PIN_LED_B, 0);
 }
+
+void Check_Time(unsigned long time)
+{
+  unsigned long bestResult = Get_Data();
+  bool newRecord = Compare_Data(time, bestResult);
+  if (newRecord)
+  {
+    playerRollStatus = NEW_RECORD;
+    Update_Data(time);
+  }
+  else
+    playerRollStatus = FAILURE;
+  Add_To_Press_Results(time, newRecord);
+}
