@@ -29,3 +29,20 @@ unsigned long Get_Data()
     http.end();
     return ret;
 }
+
+void Update_Data(unsigned long data)
+{
+    HTTPClient http;
+    String dataURL = "http://api.kits4.me/GEN/api.php?";
+    dataURL += "ACT=SET&DEV=1121&CH=1&VAL=";
+    dataURL += String(data);
+    http.begin(client, dataURL);
+    int httpCode = http.GET();
+    Serial.println(httpCode);
+    if (httpCode == HTTP_CODE_OK)
+    {
+        Serial.print("HTTP response code ");
+        Serial.println(httpCode);
+    }
+    http.end();
+}
