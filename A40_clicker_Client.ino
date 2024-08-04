@@ -9,6 +9,20 @@ const char *pswd = "11223344";
 WiFiClient client;
 int server_port = 80;
 
+void wifiClient_Setup()
+{
+    unsigned long restartRecord = 5000;
+    Serial.println("wifiSetup");
+    WiFi.begin(ssid, pswd);
+    while (WiFi.status() != WL_CONNECTED)
+    {
+        Serial.println("trying ...");
+        delay(100);
+    }
+    Serial.println("Connected to network");
+    Update_Data(restartRecord);
+}
+
 unsigned long Get_Data()
 {
     unsigned long ret = -1;
