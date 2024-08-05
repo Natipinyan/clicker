@@ -10,6 +10,10 @@ unsigned long releaseTime;
 
 void BTN_setup()
 {
+    for (int i = 0; i < 10; i++)
+    {
+        resultsHistory[i] = new ResultData(0, -1, false);
+    }
     pinMode(BTN, INPUT_PULLUP);
     lastBTNval = digitalRead(BTN);
     lastTimePress = millis();
