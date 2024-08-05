@@ -9,21 +9,26 @@ ESP8266WebServer server(80);
 
 void wifi_Setup()
 {
-    WiFi.mode(WIFI_AP_STA);
-    WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
+  WiFi.mode(WIFI_AP_STA);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
 
-    WiFi.softAP(ssid);
+  WiFi.softAP(ssid);
 
-    IPAddress myIP = WiFi.softAPIP();
-    Serial.print("AP IP address: ");
-    Serial.println(myIP);
-    server.on("/", handleRoot);
-    server.onNotFound(handleNotFound);
-    server.begin();
-    Serial.println("HTTP server started");
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);
+  server.on("/", handleRoot);
+  server.onNotFound(handleNotFound);
+  server.begin();
+  Serial.println("HTTP server started");
 }
 void wifi_loop()
 {
-    server.handleClient();
-    delay(10);
+  server.handleClient();
+  delay(10);
+}
+void handleRoot()
+{
+  char HTML[2000] = "";
+  server.send(200, "text/html", HTML);
 }
