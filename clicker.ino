@@ -11,9 +11,10 @@ void setup()
     else
     {
     }
-    wifiClient_Setup();
+    //wifiClient_Setup();
     BTN_setup();
     LED_setup();
+    wifi_Setup();
 }
 void loop()
 {

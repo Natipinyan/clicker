@@ -3,7 +3,7 @@
 
 IPAddress apIP(55, 55, 55, 55);
 
-const char *ssid = "Michael WiFi";
+const char *ssid = "Nati_WiFi";
 
 ESP8266WebServer server(80);
 
@@ -48,5 +48,5 @@ void handleNotFound()
     message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
   }
 
-  server.send(404, "text/plain", message);
+  server.send(404, "text/plain", message);
 }
