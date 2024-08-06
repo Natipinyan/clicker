@@ -1,7 +1,8 @@
 void Algorithmics(char HTML[])
 {
-  int tmpCnt = cntHistory;
+  int tmpCnt = (cntHistory == 0) ? 9 : cntHistory - 1;
   char timeToString[10];
+  int start = tmpCnt;
   do
   {
     if (resultsHistory[tmpCnt]->GetResulte() != -1)
@@ -19,7 +20,9 @@ void Algorithmics(char HTML[])
       strcat(HTML, "</td>");
       strcat(HTML, "</tr>");
     }
-    tmpCnt = (tmpCnt == 0) ? 10 : tmpCnt;
+
     tmpCnt--;
-  } while (tmpCnt != cntHistory);
+    if (tmpCnt < 0)
+      tmpCnt = 9;
+  } while (tmpCnt != start);
 }
