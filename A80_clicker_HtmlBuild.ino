@@ -7,4 +7,5 @@ void Head(char HTML[])
     strcat(HTML, "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
     strcat(HTML, "<title>Document</title>");
     Style(HTML);
+    strcat(HTML, "</head>");
 }

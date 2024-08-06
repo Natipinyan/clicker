@@ -31,16 +31,9 @@ void handleRoot()
 {
   char HTML[2000] = "";
   Head(HTML);
+  Body(HTML);
 
-  strcat(HTML, "</head>");
-  strcat(HTML, "<body>");
-  strcat(HTML, "<h2>הסטוריית לחיצות</h2>");
-  strcat(HTML, "<table>");
-  strcat(HTML, "<tr>");
-  strcat(HTML, "<th>Press Resulte</th>");
-  strcat(HTML, "<th>Broke A Record</th>");
-  strcat(HTML, "</tr>");
-  int tmpCnt = cntHistory;
+    int tmpCnt = cntHistory;
   char timeToString[10];
   do
   {
