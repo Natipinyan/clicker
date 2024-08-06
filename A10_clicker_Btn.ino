@@ -10,6 +10,10 @@ unsigned long releaseTime;
 
 void BTN_setup()
 {
+    for (int i = 0; i < 10; i++)
+    {
+        resultsHistory[i] = new ResultData(0, -1, false);
+    }
     pinMode(BTN, INPUT_PULLUP);
     lastBTNval = digitalRead(BTN);
     lastTimePress = millis();
@@ -40,7 +44,8 @@ bool Compare_Data(unsigned long time, unsigned long bestResult)
 
 void Add_To_Press_Results(unsigned long time, bool newRecord)
 {
-    delete resultsHistory[(cntHistory) % 10];
-    resultsHistory[(cntHistory) % 10] = new ResultData(cntHistory, time, newRecord);
+    cntHistory %= 10;
+    delete resultsHistory[cntHistory];
+    resultsHistory[cntHistory] = new ResultData(cntHistory, time, newRecord);
     cntHistory++;
 }
